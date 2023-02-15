@@ -1,34 +1,17 @@
-import { FaTrashAlt } from "react-icons/fa";
+import LineItem from "./LineItem"
 
 const ItemList = ({items, handleCheck, handleDelete}) => {
   return(
-    <div>
-      <ul>
-          {items.map((item) => (
-            <li className="item" key={item.id}>
-              <input 
-                type="checkbox" 
-                onChange={() => handleCheck(item.id)}
-                checked={item.checked}
-                className="larger-checkbox"
-              />
-
-              <label
-                onDoubleClick={() => handleCheck(item.id)}
-                className="ml-3"
-              >
-                {item.item}
-              </label>
-
-              <FaTrashAlt 
-                onClick={() => handleDelete(item.id)}
-                role="button"
-                className="trash-icon" 
-              />
-            </li>
-          ))}
-        </ul>
-    </div>
+    <ul>
+      {items.map((item) => (
+        <LineItem
+          key={item.id}
+          item={item}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
+      ))}
+    </ul>
   )
 }
 

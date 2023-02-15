@@ -1,44 +1,64 @@
 import { useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Content = () => {
-  const [name, setName] = useState('Dave');
-  const [count, setCount] = useState(0);
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: false,
+      item: "One half pound bag of Cocoa covered almonds unsalted"
+    },
+    {
+      id: 2,
+      checked: false,
+      item: "Item 2"
+    },
+    {
+      id: 3,
+      checked: false,
+      item: "Item 3"
+    }
+  ]);
 
-  const handleNameChange = () => {
-    const names = ['Bob', 'Kevin', 'Dave'];
-    const int = Math.floor(Math.random() * 3);
-    setName(names[int]);
+  const handleCheck = (id) => {
+    const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
+    setItems(listItems);
+    localStorage.setItem('shoppinglist', JSON.stringify(listItems));
   }
 
-  const handleClick = () => {
-    setCount(count + 1);
-    setCount(count + 1);
-    console.log(count)
-  }
-
-  const handleClick2 = () => {
-    console.log(count);
+  const handleDelete = (id) => {
+    const listItems = items.filter((item) => item.id !== id);
+    setItems(listItems);
+    localStorage.setItem('shoppinglist', JSON.stringify(listItems));
   }
 
   return(
     <main className="mt-8 ml-5 text-center">
-      <p onDoubleClick={handleClick}> Hello {name}!</p>
-      
-      <div className="mt-3">
-        <button onClick={handleNameChange}>Change Name</button>
-      </div>
+      <ul>
+        {items.map((item) => (
+          <li className="item" key={item.id}>
+            <input 
+              type="checkbox" 
+              onChange={() => handleCheck(item.id)}
+              checked={item.checked}
+              className="larger-checkbox"
+            />
 
-      <div className="mt-3">
-        <button onClick={handleNameChange}>Hello {name}!</button>
-      </div>
+            <label
+              onDoubleClick={() => handleCheck(item.id)}
+              className="ml-3"
+            >
+              {item.item}
+            </label>
 
-      <div className="mt-3">
-        <button onClick={handleClick}>Click it</button>
-      </div>
-
-      <div className="mt-3">
-        <button onClick={handleClick2}>Click it</button>
-      </div>
+            <FaTrashAlt 
+              onClick={() => handleDelete(item.id)}
+              role="button"
+              className="trash-icon" 
+            />
+          </li>
+        ))}
+      </ul>
     </main>
   )
 }

@@ -1,3 +1,16 @@
+.item {
+  display: flex;
+  align-items: center;
+}
+
+.larger-checkbox {
+  transform: scale(1.5);
+}
+
+.trash-icon {
+  margin-left: 10px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;

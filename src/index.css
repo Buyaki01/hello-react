@@ -3,6 +3,42 @@
   align-items: center;
 }
 
+.addForm {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+label[for="addItem"] {
+  display: none;
+}
+
+.addForm label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.addForm input {
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+}
+
+.addForm button {
+  color: #fff;
+  border: none;
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+.faPlus{
+  color: rgb(146, 212, 59);
+  font-size: 16px;
+}
+
+
 .larger-checkbox {
   transform: scale(1.5);
 }

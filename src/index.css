@@ -4,12 +4,16 @@
 }
 
 .addForm {
-  background-color: #f0f0f0;
   padding: 10px;
   border-radius: 5px;
+  width: 98%;
 }
 
 label[for="addItem"] {
+  display: none;
+}
+
+label[for="search"] {
   display: none;
 }
 
@@ -19,16 +23,16 @@ label[for="addItem"] {
 }
 
 .addForm input {
+  flex: 1;
   margin: 10px 0;
   padding: 5px;
   font-size: 16px;
-  border: none;
   border-radius: 3px;
+  width: 95%;
 }
 
 .addForm button {
   color: #fff;
-  border: none;
   margin: 10px 10px;
   cursor: pointer;
 }
@@ -45,6 +49,10 @@ label[for="addItem"] {
 
 .trash-icon {
   margin-left: 10px;
+}
+
+.searchBox{
+  width: 98%;
 }
 
 .footer {

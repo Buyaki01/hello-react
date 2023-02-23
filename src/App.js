@@ -23,7 +23,7 @@ function App() {
       try{
         const response = await fetch(API_URL);
         if (!response.ok) throw Error('Did not receive expected data')
-        const listItems = response.json();
+        const listItems = await response.json();
         setItems(listItems);
         SetFetchError(null)
       }catch (err) {
